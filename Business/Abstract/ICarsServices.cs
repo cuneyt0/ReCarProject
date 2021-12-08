@@ -1,4 +1,5 @@
 ﻿using Entities.Conctre;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,14 +8,21 @@ namespace Business.Abstract
 {
     public interface ICarsServices
     {
-        List<Cars> GetAll();
+       
+        List<Cars> GetCarsByBrandId(int id);
 
-        void Add(Cars cars);
+        List<Cars> GetCarsByColorId(int id);
 
-        void Delete(Cars car);
+        public void Add(Cars cars);
 
-        List<Cars> GetById(int Id);
 
-     
+        public void Delete(Cars car);
+
+        List<CarDetailsDto> GetCarsDetails();
+       
+
+
+
+
     }
 }

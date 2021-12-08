@@ -1,8 +1,10 @@
 ﻿using DataAccess.Abstract;
 using Entities.Conctre;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -34,14 +36,29 @@ namespace DataAccess.Concrete.InMemory
             _cars.Remove(carToDelete);
         }
 
+        public Cars Get(Expression<Func<Cars, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Cars> GetAll()
         {
             return _cars;
         }
 
+        public List<Cars> GetAll(Expression<Func<Cars, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Cars> GetById(int Id)
         {
             return _cars.Where(c => c.Id == Id).ToList();
+        }
+
+        public List<CarDetailsDto> GetCarsDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Cars cars)
