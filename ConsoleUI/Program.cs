@@ -10,12 +10,18 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //Testone();
+            Testone();
 
+           // TestTwo();
+
+        }
+
+        private static void TestTwo()
+        {
             CarsManager carsManager = new CarsManager(new EfCarDal());
 
             var result = carsManager.GetCarsDetails();
-            if(result.Success == false)
+            if (result.Success == false)
             {
                 Console.WriteLine(result.Message);
             }
@@ -27,8 +33,6 @@ namespace ConsoleUI
                 }
 
             }
-
-            
         }
 
         private static void Testone()
