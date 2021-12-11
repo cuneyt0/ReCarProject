@@ -14,21 +14,32 @@ namespace ConsoleUI
 
             CarsManager carsManager = new CarsManager(new EfCarDal());
 
-            foreach (var item in carsManager.GetCarsDetails())
+            var result = carsManager.GetCarsDetails();
+            if(result.Success == false)
             {
-                Console.WriteLine("Araba adı: "+ item.BrandName+ " "+"Araba rengi"+item.ColorName);
+                Console.WriteLine(result.Message);
             }
+            else
+            {
+                foreach (var item in result.Data)
+                {
+                    Console.WriteLine("Araba adı: " + item.BrandName + " " + "Araba rengi" + item.ColorName);
+                }
+
+            }
+
+            
         }
 
         private static void Testone()
         {
             CarsManager carsManager = new CarsManager(new EfCarDal());
-            foreach (var cars in carsManager.GetCarsByBrandId(1))
+            foreach (var cars in carsManager.GetCarsByBrandId(1).Data)
             {
                 Console.WriteLine(cars.BrandId + " " + cars.Description);
             }
             Console.WriteLine("---------GetCarsByColorId ---------------");
-            foreach (var cars in carsManager.GetCarsByColorId(2))
+            foreach (var cars in carsManager.GetCarsByColorId(2).Data)
             {
                 Console.WriteLine(cars.BrandId + " " + cars.Description);
             }
