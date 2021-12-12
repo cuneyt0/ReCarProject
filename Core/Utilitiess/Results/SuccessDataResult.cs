@@ -18,7 +18,7 @@ namespace Core.Utilitiess.Results
         {
 
         }
-        public SuccessDataResult():base(default,true)
+        public SuccessDataResult() :base(default,true)
         {
 
         }

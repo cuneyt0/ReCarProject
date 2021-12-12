@@ -1,4 +1,5 @@
-﻿using Entities.Conctre;
+﻿
+using Entities.Conctre;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Cars> Cars { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Customers> Customers { get; set; }
+        public DbSet<Rentals> Rentals { get; set; }
     }
     
 }
