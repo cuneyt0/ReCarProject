@@ -31,17 +31,17 @@ namespace WebAPI
         {
             services.AddControllers();
             //Users 
-            services.AddSingleton<IUsersServices,UsersManager>();
-            services.AddSingleton<IUsersDal, EfUserDal>();
-            //Cars
-            services.AddSingleton<ICarsServices, CarsManager>();
-            services.AddSingleton<ICarDal, EfCarDal>();
-            //Customers
-            services.AddSingleton<ICustomersServices, CustomersManager>();
-            services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            //Rentals
-            services.AddSingleton<IRentalServices, RentalsManager>();
-            services.AddSingleton<IRentalsDal, EfRentalDal>();
+            //services.AddSingleton<IUsersServices,UsersManager>();
+            //services.AddSingleton<IUsersDal, EfUserDal>();
+            ////Cars
+            //services.AddSingleton<ICarsServices, CarsManager>();
+            //services.AddSingleton<ICarDal, EfCarDal>();
+            ////Customers
+            //services.AddSingleton<ICustomersServices, CustomersManager>();
+            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
+            ////Rentals
+            //services.AddSingleton<IRentalServices, RentalsManager>();
+            //services.AddSingleton<IRentalsDal, EfRentalDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
