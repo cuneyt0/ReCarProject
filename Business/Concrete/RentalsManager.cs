@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FuentValidation;
+using Core.Aspect.Autofac.Validation;
 using Core.CrossCuttingCorcerns.Validation;
 using Core.Utilitiess.Results;
 using DataAccess.Abstract;
@@ -19,10 +20,10 @@ namespace Business.Concrete
         {
             _rentalsDal = rentalsdal;
         }
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rentals rental)
         {
-            ValidationTool.Validate(new RentalValidator(), rental);
+         //   ValidationTool.Validate(new RentalValidator(), rental);
             _rentalsDal.Add(rental);
                 return new SuccessResult(Messages.RentalAdd);
             
