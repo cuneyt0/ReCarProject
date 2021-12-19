@@ -57,6 +57,14 @@ namespace Business.Constants
         public static string RentalFind = "Rental find";
         public static string RentalFindErrorMessage = "The rental was not  finded";
 
+        //******---Image  ----*****//
+        public static string ImageAdd = "Image Added";
+        public static string ImageAddErrorMessage = "The image was not  added";
+
+        public static string CheckIfCarImageCountMessage = "One car must have 5 or less images";
+
+        public static string CarImageUpdated = "Image updated";
+
 
     }
 }

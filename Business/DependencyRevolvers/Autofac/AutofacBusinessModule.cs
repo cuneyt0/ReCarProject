@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Business.Abstract;
 using Business.Concrete;
+using Core.Utilitiess.Helpers.FileHelper;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using System;
@@ -26,8 +27,11 @@ namespace Business.DependencyRevolvers.Autofac
             //Rentals
             builder.RegisterType<RentalsManager>().As<IRentalServices>().SingleInstance();
             builder.RegisterType<EfRentalDal>().As<IRentalsDal>().SingleInstance();
+            //CarImage
+            builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
+            builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
 
-
+            builder.RegisterType<FileHeplerManager>().As<IFileHelper>().SingleInstance();
         }
     }
 }
