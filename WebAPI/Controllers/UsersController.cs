@@ -1,4 +1,6 @@
-﻿using Business.Abstract;
+﻿
+using Business.Abstract;
+using Core.Entities.Concrete;
 using Entities.Conctre;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,17 +15,17 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        IUsersServices _usersService;
+        IUserService _userService;
 
-        public UsersController(IUsersServices usersService)
+        public UsersController(IUserService usersService)
         {
-            _usersService = usersService;
+            _userService = usersService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _usersService.GetAll();
+            var result = _userService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -33,7 +35,7 @@ namespace WebAPI.Controllers
         [HttpGet("getuserbyid")]
         public IActionResult GetUsersById(int id)
         {
-            var result = _usersService.GetUsersById(id);
+            var result = _userService.GetUsersById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -43,9 +45,9 @@ namespace WebAPI.Controllers
 
         [HttpPost("add")]
 
-        public IActionResult Add(Users user)
+        public IActionResult Add(User user)
         {
-            var result = _usersService.Add(user);
+            var result = _userService.Add(user);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,9 +57,9 @@ namespace WebAPI.Controllers
 
         [HttpDelete("delete")]
 
-        public IActionResult Delete(Users user)
+        public IActionResult Delete(User user)
         {
-            var result = _usersService.Delete(user);
+            var result = _userService.Delete(user);
             if (result.Success)
             {
                 return Ok(result);
@@ -66,9 +68,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPatch("update")]
-        public IActionResult Update(Users user)
+        public IActionResult Update(User user)
         {
-            var result = _usersService.Update(user);
+            var result = _userService.Update(user);
 
 
             if (result.Success)

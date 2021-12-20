@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Conctre;
@@ -212,7 +213,7 @@ namespace ConsoleUI
 
         private static void UserGetById()
         {
-            UsersManager usersManager = new UsersManager(new EfUserDal());
+            UserManager usersManager = new UserManager(new EfUserDal());
 
             var result = usersManager.GetUsersById(1);
 
@@ -229,25 +230,28 @@ namespace ConsoleUI
             }
         }
 
-        private static void UserUpdate()
-        {
-            UsersManager usersManager = new UsersManager(new EfUserDal());
-            Users newUser = new Users { Id = 4, FirstName = "Levent", LastName = "Taha", Email = "123@gmail.com", Password = 123 };
+        /*
+            private static void UserUpdate()
+           {
+               UserManager usersManager = new UserManager(new EfUserDal());
+               User newUser = new User { Id = 4, FirstName = "Levent", LastName = "Taha", Email = "123@gmail.com", PasswordHash = 123 };
 
-            var result = usersManager.Update(newUser);
-            if (result.Success == false)
-            {
-                Console.WriteLine(result.Message);
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+               var result = usersManager.Update(newUser);
+               if (result.Success == false)
+               {
+                   Console.WriteLine(result.Message);
+               }
+               else
+               {
+                   Console.WriteLine(result.Message);
+               }
+           }
+
+         */
 
         private static void UserGetAll()
         {
-            UsersManager usersManager = new UsersManager(new EfUserDal());
+            UserManager usersManager = new UserManager(new EfUserDal());
 
             var result = usersManager.GetAll();
 
@@ -264,37 +268,43 @@ namespace ConsoleUI
             }
         }
 
-        private static void UserDeleteTest()
-        {
-            UsersManager usersManager = new UsersManager(new EfUserDal());
-            Users newUser = new Users { Id = 5, FirstName = "Apo", LastName = "Taha", Email = "123@gmail.com", Password = 123 };
+        /*
+          private static void UserDeleteTest()
+         {
+             UserManager usersManager = new UserManager(new EfUserDal());
+             Users newUser = new Users { Id = 5, FirstName = "Apo", LastName = "Taha", Email = "123@gmail.com", Password = 123 };
 
-            var result = usersManager.Delete(newUser);
-            if (result.Success == false)
-            {
-                Console.WriteLine(result.Message);
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+             var result = usersManager.Delete(newUser);
+             if (result.Success == false)
+             {
+                 Console.WriteLine(result.Message);
+             }
+             else
+             {
+                 Console.WriteLine(result.Message);
+             }
+         }
 
-        private static void UserAddTest()
-        {
-            UsersManager usersManager = new UsersManager(new EfUserDal());
-            Users newUser = new Users { Id = 5, FirstName = "Apo", LastName = "Taha", Email = "123@gmail.com", Password = 123 };
+         */
 
-            var result = usersManager.Add(newUser);
-            if (result.Success == false)
-            {
-                Console.WriteLine(result.Message);
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-        }
+        /*
+           private static void UserAddTest()
+          {
+              UserManager usersManager = new UserManager(new EfUserDal());
+              Users newUser = new Users { Id = 5, FirstName = "Apo", LastName = "Taha", Email = "123@gmail.com", Password = 123 };
+
+              var result = usersManager.Add(newUser);
+              if (result.Success == false)
+              {
+                  Console.WriteLine(result.Message);
+              }
+              else
+              {
+                  Console.WriteLine(result.Message);
+              }
+          }
+
+         */
 
         private static void TestTwo()
         {

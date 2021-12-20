@@ -1,11 +1,18 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
+using Castle.DynamicProxy;
 using Core.Utilitiess.Helpers.FileHelper;
+using Core.Utilitiess.Interceptors;
+using Core.Utilitiess.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Http;
+
 using System;
 using System.Collections.Generic;
+
 using System.Text;
 
 namespace Business.DependencyRevolvers.Autofac
@@ -16,8 +23,8 @@ namespace Business.DependencyRevolvers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             //Users
-            builder.RegisterType<UsersManager>().As<IUsersServices>().SingleInstance();
-            builder.RegisterType<EfUserDal>().As<IUsersDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
             //Cars
             builder.RegisterType<CarsManager>().As<ICarsServices>().SingleInstance();
             builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
@@ -32,6 +39,21 @@ namespace Business.DependencyRevolvers.Autofac
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
 
             builder.RegisterType<FileHeplerManager>().As<IFileHelper>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
         }
     }
 }

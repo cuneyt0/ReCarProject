@@ -11,7 +11,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : IfEntityRepositoryBase<Cars, ReCapProjectContext>, ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Cars, ReCapProjectContext>, ICarDal
     {
         public List<CarDetailsDto> GetCarsDetails()
         {

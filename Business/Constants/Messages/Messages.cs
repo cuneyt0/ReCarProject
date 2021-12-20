@@ -65,6 +65,15 @@ namespace Business.Constants
 
         public static string CarImageUpdated = "Image updated";
 
+        /*----*/
+        public static string AuthorizationDenied = "Yekiniz bulunmamaktadır.";
+        public static string UserRegistered = "Kayıt Olundu";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Parola hatalı";
+        public static string SuccessfulLogin = "Başarılu giriş";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        internal static string AccessTokenCreated = "Token başarıyla oluşturuldu";
+
 
     }
 }

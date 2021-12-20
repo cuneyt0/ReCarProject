@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FuentValidation;
 using Core.Aspect.Autofac.Validation;
 using Core.CrossCuttingCorcerns.Validation;
+using Core.Entities.Concrete;
 using Core.Utilitiess.Results;
 using DataAccess.Abstract;
 using Entities.Conctre;
@@ -20,6 +22,7 @@ namespace Business.Concrete
         {
             _rentalsDal = rentalsdal;
         }
+        [SecuredOperation("rental.add,admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rentals rental)
         {
@@ -60,10 +63,10 @@ namespace Business.Concrete
         {
             if (rental.Id <= 0)
             {
-                return new ErrorDataResult<Users>(Messages.RentalUpdateErrorMessage);
+                return new ErrorDataResult<User>(Messages.RentalUpdateErrorMessage);
             }
             _rentalsDal.Update(rental);
-            return new SuccessDataResult<Users>(Messages.RentalUpdate);
+            return new SuccessDataResult<User>(Messages.RentalUpdate);
         }
     }
 }
