@@ -1,4 +1,7 @@
 using Business.Concrete;
+using Core.DependencyRevolvers;
+using Core.Extensions;
+using Core.Utilitiess.IoC;
 using Core.Utilitiess.Security.Encryption;
 using Core.Utilitiess.Security.JWT;
 using DataAccess.Abstract;
@@ -45,7 +48,8 @@ namespace WebAPI
             ////Rentals
             //services.AddSingleton<IRentalServices, RentalsManager>();
             //services.AddSingleton<IRentalsDal, EfRentalDal>();
-
+            services.AddDependencyResolvers(new ICoreModule[] {
+            new CoreModule()});
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
