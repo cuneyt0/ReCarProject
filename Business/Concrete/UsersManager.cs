@@ -1,7 +1,9 @@
 ﻿
 using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FuentValidation;
+using Core.Aspect.Autofac.Caching;
 using Core.Aspect.Autofac.Validation;
 using Core.Entities;
 using Core.Entities.Concrete;
@@ -20,8 +22,9 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(UserValidator))]
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Add(User user)
         {
 
@@ -49,7 +52,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
-
+        [CacheAspect]
         public IDataResult<User> GetUsersById(int id)
         {
             if (id <= 0)
@@ -59,6 +62,7 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id));
         }
 
+        [CacheRemoveAspect("IUserService.Get")]
         public IResult Update(User user)
         {
             if (user.Id <= 0)
@@ -83,16 +87,12 @@ namespace Business.Concrete
             return _userDal.Get(u => u.Email == email);
         }
 
-       
+        public IResult AddTransactionalTest(User user)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 
-/*
-  IUsersDal _usersdal;
-        public UserManager(IUsersDal usersDal)
-        {
-            _usersdal = usersDal;
-        }
-        
+
  
- */

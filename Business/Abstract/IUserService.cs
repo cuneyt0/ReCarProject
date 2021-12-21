@@ -22,5 +22,7 @@ namespace Business.Abstract
         List<OperationClaim> GetClaims(User user);
   
         User GetByMail(string email);
+
+        IResult AddTransactionalTest(User user);
     }
 }
