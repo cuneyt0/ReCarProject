@@ -44,6 +44,7 @@ namespace Business.Concrete
             }
         }
 
+        [CacheAspect]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
