@@ -5,6 +5,7 @@ using Business.Constants;
 using Business.ValidationRules.FuentValidation;
 using Core.Aspect.Autofac.Caching;
 using Core.Aspect.Autofac.Validation;
+using Core.Aspect.Performance;
 using Core.Entities;
 using Core.Entities.Concrete;
 using Core.Utilitiess.Results;
@@ -48,6 +49,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
